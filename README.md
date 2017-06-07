@@ -2,8 +2,8 @@
 
 Simple React & Redux & webpack 2 starter
 
-[![Dependency Status](https://img.shields.io/david/devfive/es6-webpack-starter.svg)](https://david-dm.org/devfive/react-webpack-starter)
-[![Dev-Dependency Status](https://img.shields.io/david/dev/devfive/es6-webpack-starter.svg)](https://david-dm.org/devfive/react-webpack-starter?type=dev)
+[![dependencies Status](https://david-dm.org/devfive/react-webpack-starter/status.svg)](https://david-dm.org/devfive/react-webpack-starter)
+[![devDependencies Status](https://david-dm.org/devfive/react-webpack-starter/dev-status.svg)](https://david-dm.org/devfive/react-webpack-starter?type=dev)
 
 ## Usage
 
@@ -26,7 +26,7 @@ Simple React & Redux & webpack 2 starter
   git init
   ```
 
-4. Start work!
+4. Start your exciting project!
 
 ### Development
 
