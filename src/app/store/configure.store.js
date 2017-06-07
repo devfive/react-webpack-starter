@@ -2,11 +2,21 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import multi from 'redux-multi';
 import thunk from 'redux-thunk';
 import { batchedSubscribe } from 'redux-batched-subscribe';
-import debounce from 'lodash.debounce';
-import { logger } from './logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'react-router-redux';
+import debounce from 'lodash.debounce';
+import createHistory from 'history/createBrowserHistory';
 
-let middleware = [thunk, multi];
+import { logger } from './logger';
+
+const history = createHistory();
+
+let middleware = [
+  thunk,
+  multi,
+  routerMiddleware(history),
+];
+
 let composeFunction = compose;
 
 // __DEV__ is a global defined by webpack
@@ -36,4 +46,7 @@ function configureStore(rootReducer, initialState = {}, storeMiddleware = [], en
   );
 }
 
-export { configureStore };
+export {
+  configureStore,
+  history,
+};

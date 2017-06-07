@@ -3,7 +3,7 @@
 Simple React & Redux & webpack 2 starter
 
 [![Dependency Status](https://img.shields.io/david/devfive/es6-webpack-starter.svg)](https://david-dm.org/devfive/react-webpack-starter)
-[![Dev-Dependency Status](https://img.shields.io/david/dev/devfive/es6-webpack-starter.svg)](https://david-dm.org/devfive/react-webpack-starter#info=devDependencies)
+[![Dev-Dependency Status](https://img.shields.io/david/dev/devfive/es6-webpack-starter.svg)](https://david-dm.org/devfive/react-webpack-starter?type=dev)
 
 ## Usage
 

@@ -1,8 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 import {
   LandingPage,
   Loading,
+  SamplePage,
 } from '../';
 
 class App extends React.Component {
@@ -40,7 +43,8 @@ class App extends React.Component {
       <div>
         <Loading isLoading={ isLoading } />
         <main className="main">
-          { this.props.children || <LandingPage /> }
+          <Route exact path="/" component={ LandingPage } />
+          <Route path="/sample" component={ SamplePage } />
         </main>
       </div>
     );

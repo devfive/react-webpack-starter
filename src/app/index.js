@@ -4,22 +4,17 @@ import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
 import { history, store } from './store/create.store';
-
-import {
-  AppContainer,
-  SamplePage,
-} from './components';
+import { AppContainer } from './components';
 
 ReactDOM.render(
   <Provider store={ store }>
-    <Router history={ history }>
-      <Route path="/" component={ AppContainer }>
-        <Route path="/sample" component={ SamplePage } />
-      </Route>
-    </Router>
+    <ConnectedRouter history={ history }>
+      <Route path="/" component={ AppContainer } />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
