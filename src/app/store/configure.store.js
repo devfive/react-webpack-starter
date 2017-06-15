@@ -7,17 +7,19 @@ import { routerMiddleware } from 'react-router-redux';
 import debounce from 'lodash.debounce';
 import createHistory from 'history/createBrowserHistory';
 
+import { rootReducer } from './root';
 import { logger } from './logger';
 
-const history = createHistory();
+let composeFunction = compose;
 
-let middleware = [
+const history = createHistory();
+const enhancers = [];
+const middleware = [
   thunk,
   multi,
   routerMiddleware(history),
 ];
 
-let composeFunction = compose;
 
 // __DEV__ is a global defined by webpack
 // when we work in __DEV__ environment
@@ -26,27 +28,23 @@ if (__DEV__) {
   composeFunction = composeWithDevTools;
 }
 
-function configureStore(rootReducer, initialState = {}, storeMiddleware = [], enhancers = []) {
-  middleware = [...middleware, ...storeMiddleware];
+const store = createStore(
+  rootReducer,
+  {},
+  composeFunction(
+    applyMiddleware(...middleware),
+    ...enhancers,
+    batchedSubscribe(debounce((notify) => {
+      if (__DEV__) {
+        console.log('------------');
+      }
 
-  return createStore(
-    rootReducer,
-    initialState,
-    composeFunction(
-      applyMiddleware(...middleware),
-      ...enhancers,
-      batchedSubscribe(debounce((notify) => {
-        if (__DEV__) {
-          console.log('------------');
-        }
-
-        notify();
-      }))
-    )
-  );
-}
+      notify();
+    }))
+  )
+);
 
 export {
-  configureStore,
+  store,
   history,
 };

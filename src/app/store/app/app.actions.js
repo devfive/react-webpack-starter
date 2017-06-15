@@ -4,7 +4,7 @@ import {
   MENU_HIDE,
   MENU_SHOW,
   MENU_TOGGLE,
-} from '../constants';
+} from './app.constants';
 
 const appLoading = () => {
   return {
