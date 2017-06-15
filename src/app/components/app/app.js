@@ -10,24 +10,18 @@ import {
 
 class App extends React.Component {
   static propTypes = {
+    appLoading: PropTypes.func.isRequired,
     children: PropTypes.element,
     isMenuVisible: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    onAppLoaded: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    if (__DEV__) {
-      return setTimeout(() => {
-        this.props.onAppLoaded();
-      }, 2000);
-    }
-
-    this.props.onAppLoaded();
+  componentWillMount() {
+    this.props.appLoading();
   }
 
   render() {

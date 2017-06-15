@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
+
 import { App } from './app';
-import { appLoaded } from '../../store/app';
+import { appLoading } from '../../store/app';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAppLoaded: () => dispatch(appLoaded()),
+    appLoading: () => dispatch(appLoading()),
   };
 };
 

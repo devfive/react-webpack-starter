@@ -3,21 +3,26 @@ import multi from 'redux-multi';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { routerMiddleware } from 'react-router-redux';
+import { createEpicMiddleware } from 'redux-observable';
 import debounce from 'lodash.debounce';
 import createHistory from 'history/createBrowserHistory';
 
-import { rootReducer } from './root';
+import {
+  rootEpic,
+  rootReducer,
+} from './root';
 import { logger } from './logger';
 
 let composeFunction = compose;
 
+const epicMiddleware = createEpicMiddleware(rootEpic);
 const history = createHistory();
 const enhancers = [];
 const middleware = [
+  epicMiddleware,
   multi,
   routerMiddleware(history),
 ];
-
 
 // __DEV__ is a global defined by webpack
 // when we work in __DEV__ environment
