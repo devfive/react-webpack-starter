@@ -1,6 +1,5 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import multi from 'redux-multi';
-import thunk from 'redux-thunk';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { routerMiddleware } from 'react-router-redux';
@@ -15,7 +14,6 @@ let composeFunction = compose;
 const history = createHistory();
 const enhancers = [];
 const middleware = [
-  thunk,
   multi,
   routerMiddleware(history),
 ];
