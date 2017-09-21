@@ -66,6 +66,9 @@ module.exports = {
             'stage-2',
             'react',
           ],
+          plugins: [
+            'transform-function-bind',
+          ],
         },
       },
       {
