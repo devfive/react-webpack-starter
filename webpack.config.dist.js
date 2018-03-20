@@ -24,16 +24,6 @@ module.exports = {
       __DEV__: false,
       __API_URL__: JSON.stringify('http://localhost:8000'),
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      minimize: true,
-      output: {
-        comments: false,
-      },
-      compress: {
-        warnings: true,
-      },
-    }),
     new HtmlWebpackPlugin({
       template: `html-loader!preprocess-loader!src/index.html`,
       inject: true,
