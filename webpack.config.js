@@ -30,7 +30,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
   ],
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {

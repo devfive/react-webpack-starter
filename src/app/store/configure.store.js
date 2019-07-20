@@ -2,21 +2,21 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import multi from 'redux-multi';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'connected-react-router';
 import { createEpicMiddleware } from 'redux-observable';
 import debounce from 'lodash.debounce';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import {
   rootEpic,
-  rootReducer,
+  getRootReducer,
 } from './root';
 import { logger } from './logger';
 
 let composeFunction = compose;
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
-const history = createHistory();
+const epicMiddleware = createEpicMiddleware();
+const history = createBrowserHistory();
 const enhancers = [];
 const middleware = [
   epicMiddleware,
@@ -32,7 +32,7 @@ if (__DEV__) {
 }
 
 const store = createStore(
-  rootReducer,
+  getRootReducer(history),
   {},
   composeFunction(
     applyMiddleware(...middleware),
@@ -46,6 +46,8 @@ const store = createStore(
     }))
   )
 );
+
+epicMiddleware.run(rootEpic);
 
 export {
   store,
