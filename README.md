@@ -1,9 +1,17 @@
 # react-webpack-starter
 
-Simple React & Redux & webpack 2 starter
+Simple React & Redux & webpack starter
 
 [![dependencies Status](https://david-dm.org/devfive/react-webpack-starter/status.svg)](https://david-dm.org/devfive/react-webpack-starter)
 [![devDependencies Status](https://david-dm.org/devfive/react-webpack-starter/dev-status.svg)](https://david-dm.org/devfive/react-webpack-starter?type=dev)
+
+## Features
+
+1. React
+2. Redux
+3. Redux-observable
+4. RxJS
+5. Redux connected router
 
 ## Usage
 
