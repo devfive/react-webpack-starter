@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.appLoading();
   }
 
