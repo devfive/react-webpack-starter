@@ -49,16 +49,6 @@ module.exports = {
           path.join(__dirname, 'src'),
         ],
         loader: 'babel-loader',
-        options: {
-          presets: [
-            'es2015',
-            'stage-2',
-            'react',
-          ],
-          plugins: [
-            'transform-function-bind',
-          ],
-        },
       },
       {
         test: /\.scss$/,
@@ -68,8 +58,8 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
+              // modules: true,
+              // localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
           'postcss-loader',
