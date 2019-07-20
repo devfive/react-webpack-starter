@@ -30,12 +30,6 @@ class App extends React.Component<Props, State> {
   render():JSX.Element {
     const { isLoading } = this.props;
 
-    if (isLoading) {
-      document.body.classList.add('body--loading');
-    } else {
-      document.body.classList.remove('body--loading');
-    }
-
     return (
       <div>
         <Loading isLoading={ isLoading } />
