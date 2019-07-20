@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ReactChild } from 'react';
 import { Route } from 'react-router-dom';
 
 import {
@@ -9,31 +8,29 @@ import {
 } from '..';
 
 export interface Props {
-  appLoading:() => void;
-  children:ReactChild;
-  isMenuVisible:boolean;
-  isLoading:boolean;
+  appLoading: () => void;
+  children: React.ReactChild;
+  isLoading: boolean;
+  isMenuVisible: boolean;
 }
 
-export interface State {}
-
-class App extends React.Component<Props, State> {
-  constructor(props) {
+class App extends React.Component<Props, {}> {
+  constructor(props: Props) {
     super(props);
   }
 
-  componentDidMount() {
+  public componentDidMount(): void {
     this.props.appLoading();
   }
 
-  render():JSX.Element {
+  public render(): JSX.Element {
     const { isLoading } = this.props;
 
     return (
       <div>
         <Loading isLoading={ isLoading } />
         <main className="main">
-          <Route exact path="/" component={ LandingPage } />
+          <Route exact={ true } path="/" component={ LandingPage } />
           <Route path="/sample" component={ SamplePage } />
         </main>
       </div>

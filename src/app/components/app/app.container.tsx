@@ -1,21 +1,22 @@
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { appLoading } from '../../store/app';
 import { App } from './app';
 
-const mapStateToProps = (state) => {
+const mapStateToProps: any = (state: any) => {
   return {
-    isMenuVisible: state.app.isMenuVisible,
     isLoading: state.app.isLoading,
+    isMenuVisible: state.app.isMenuVisible,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps: any = (dispatch: any) => {
   return {
     appLoading: () => dispatch(appLoading()),
   };
 };
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppContainer: React.Component = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export { AppContainer };

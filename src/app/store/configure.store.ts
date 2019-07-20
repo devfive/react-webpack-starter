@@ -14,16 +14,16 @@ import { createEpicMiddleware } from 'redux-observable';
 
 import { logger } from './logger';
 import {
-  rootEpic,
   getRootReducer,
+  rootEpic,
 } from './root';
 
-let composeFunction:any = compose;
+let composeFunction: any = compose;
 
-const epicMiddleware:any = createEpicMiddleware();
-const history:History = createBrowserHistory();
-const enhancers:any[] = [];
-const middleware:Middleware[] = [
+const epicMiddleware: any = createEpicMiddleware();
+const history: History = createBrowserHistory();
+const enhancers: any[] = [];
+const middleware: Middleware[] = [
   epicMiddleware,
   multi,
   routerMiddleware(history),
@@ -36,7 +36,7 @@ if (__DEV__) {
   composeFunction = composeWithDevTools;
 }
 
-const store = createStore(
+const store: any = createStore(
   getRootReducer(history),
   {},
   composeFunction(
@@ -44,12 +44,13 @@ const store = createStore(
     ...enhancers,
     batchedSubscribe(debounce((notify) => {
       if (__DEV__) {
+        // tslint:disable-next-line: no-console
         console.log('------------');
       }
 
       notify();
-    }))
-  )
+    })),
+  ),
 );
 
 epicMiddleware.run(rootEpic);

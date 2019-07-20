@@ -8,6 +8,7 @@ const appEpic = (action$) => {
   return action$.pipe(
     ofType(APP_LOADING),
     map(() => appLoaded()),
+    // This is just to emulate loading some data and to display loading indicator
     delay(2500),
   );
 };

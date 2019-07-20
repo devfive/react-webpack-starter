@@ -55,6 +55,16 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
+        include: [path.join(__dirname, 'src')],
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        options: {
+          failOnWarning: false,
+          failOnError: true,
+        },
+      },
+      {
+        test: /\.tsx?$/,
         include: [
           path.join(__dirname, 'src'),
         ],

@@ -68,6 +68,8 @@
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-loader": "^3.5.4",
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.3",
     "url-loader": "^2.1.0",
