@@ -1,8 +1,8 @@
-import '../styles/styles.scss';
+import '@atlaskit/css-reset';
 
 import 'whatwg-fetch';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
@@ -16,5 +16,5 @@ ReactDOM.render(
       <Route path="/" component={ AppContainer } />
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

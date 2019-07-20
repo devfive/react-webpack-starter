@@ -61,7 +61,7 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           'style-loader',
           {
@@ -75,7 +75,6 @@ module.exports = {
           'postcss-loader',
           'sass-loader',
         ],
-        exclude,
       },
       {
         test: /\.(png|jpe?g|gif)$/,
