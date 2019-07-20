@@ -1,24 +1,29 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import multi from 'redux-multi';
+import { routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory, History } from 'history';
+import { debounce } from 'lodash';
+import {
+  applyMiddleware,
+  compose,
+  createStore,
+  Middleware,
+} from 'redux';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { routerMiddleware } from 'connected-react-router';
+import * as multi from 'redux-multi';
 import { createEpicMiddleware } from 'redux-observable';
-import debounce from 'lodash.debounce';
-import { createBrowserHistory } from 'history';
 
+import { logger } from './logger';
 import {
   rootEpic,
   getRootReducer,
 } from './root';
-import { logger } from './logger';
 
-let composeFunction = compose;
+let composeFunction:any = compose;
 
-const epicMiddleware = createEpicMiddleware();
-const history = createBrowserHistory();
-const enhancers = [];
-const middleware = [
+const epicMiddleware:any = createEpicMiddleware();
+const history:History = createBrowserHistory();
+const enhancers:any[] = [];
+const middleware:Middleware[] = [
   epicMiddleware,
   multi,
   routerMiddleware(history),

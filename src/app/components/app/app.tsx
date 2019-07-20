@@ -1,21 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { ReactChild } from 'react';
 import { Route } from 'react-router-dom';
 
 import {
   LandingPage,
   Loading,
   SamplePage,
-} from '../';
+} from '..';
 
-class App extends React.Component {
-  static propTypes = {
-    appLoading: PropTypes.func.isRequired,
-    children: PropTypes.element,
-    isMenuVisible: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-  };
+export interface Props {
+  appLoading:() => void;
+  children:ReactChild;
+  isMenuVisible:boolean;
+  isLoading:boolean;
+}
 
+export interface State {}
+
+class App extends React.Component<Props, State> {
   constructor(props) {
     super(props);
   }
@@ -24,7 +26,7 @@ class App extends React.Component {
     this.props.appLoading();
   }
 
-  render() {
+  render():JSX.Element {
     const { isLoading } = this.props;
 
     if (isLoading) {

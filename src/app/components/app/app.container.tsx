@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { App } from './app';
 import { appLoading } from '../../store/app';
+import { App } from './app';
 
 const mapStateToProps = (state) => {
   return {

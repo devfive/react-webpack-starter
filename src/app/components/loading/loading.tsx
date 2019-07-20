@@ -1,9 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import * as React from 'react';
+import * as classnames from 'classnames';
 
-const Loading = ({ isLoading }) => {
-  const classes = classnames({
+export interface Props {
+  isLoading:boolean;
+}
+
+function Loading({ isLoading }:Props):JSX.Element {
+  const classes:string = classnames({
     'loading-indicator': true,
     'loading-indicator--hidden': !isLoading,
   });
@@ -13,10 +16,6 @@ const Loading = ({ isLoading }) => {
       <div className="loading-indicator__text">Ładowanie...</div>
     </div>
   );
-};
-
-Loading.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
 };
 
 export { Loading };
