@@ -31,10 +31,13 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
   ],
   devtool: 'eval-source-map',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: [path.join(__dirname, 'src')],
         enforce: 'pre',
         loader: 'eslint-loader',
@@ -44,11 +47,18 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: [
           path.join(__dirname, 'src'),
         ],
         loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        include: [
+          path.join(__dirname, 'src'),
+        ],
+        loader: 'ts-loader',
       },
       {
         test: /\.scss$/,
