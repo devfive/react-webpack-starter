@@ -11,12 +11,11 @@ import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import * as multi from 'redux-multi';
 import { createEpicMiddleware } from 'redux-observable';
-
-import { logger } from './logger';
 import {
   getRootReducer,
   rootEpic,
 } from './root';
+import { logger } from './utils/logger';
 
 let composeFunction: any = compose;
 

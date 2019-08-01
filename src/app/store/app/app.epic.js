@@ -1,12 +1,12 @@
 import { delay, map } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
-import { appLoaded } from './app.actions';
-import { APP_LOADING } from './app.constants';
+import { appLoaded } from './appActions';
+import { Actions } from '../Actions';
 
 const appEpic = (action$) => {
   return action$.pipe(
-    ofType(APP_LOADING),
+    ofType(Actions.APP_LOADING),
     map(() => appLoaded()),
     // This is just to emulate loading some data and to display loading indicator
     delay(2500),
