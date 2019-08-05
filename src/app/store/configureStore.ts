@@ -6,20 +6,24 @@ import {
   compose,
   createStore,
   Middleware,
+  Store,
 } from 'redux';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import * as multi from 'redux-multi';
-import { createEpicMiddleware } from 'redux-observable';
+import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import {
   getRootReducer,
+  RootActions,
   rootEpic,
+  RootReducerState,
 } from './root';
+import { batchedSubscribeNotifier } from './utils/batchedSubscribeNotifier';
 import { logger } from './utils/logger';
 
 let composeFunction: any = compose;
 
-const epicMiddleware: any = createEpicMiddleware();
+const epicMiddleware: EpicMiddleware<RootActions, RootActions, RootReducerState> = createEpicMiddleware();
 const history: History = createBrowserHistory();
 const enhancers: any[] = [];
 const middleware: Middleware[] = [
@@ -35,20 +39,13 @@ if (__DEV__) {
   composeFunction = composeWithDevTools;
 }
 
-const store: any = createStore(
+const store: Store<RootReducerState, RootActions> = createStore(
   getRootReducer(history),
   {},
   composeFunction(
     applyMiddleware(...middleware),
     ...enhancers,
-    batchedSubscribe(debounce((notify) => {
-      if (__DEV__) {
-        // tslint:disable-next-line: no-console
-        console.log('------------');
-      }
-
-      notify();
-    })),
+    batchedSubscribe(debounce(batchedSubscribeNotifier)),
   ),
 );
 

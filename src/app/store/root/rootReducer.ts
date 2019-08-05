@@ -3,7 +3,7 @@ import { History } from 'history';
 import { combineReducers, Reducer } from 'redux';
 import { appReducer, AppReducerState } from '../app';
 
-interface RootReducerState {
+export interface RootReducerState {
   app: AppReducerState;
   router: RouterState;
 }

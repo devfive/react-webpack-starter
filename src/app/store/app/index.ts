@@ -1,3 +1,3 @@
 export * from './appActions';
-export * from './app.epic';
+export * from './appEpic';
 export * from './appReducer';
