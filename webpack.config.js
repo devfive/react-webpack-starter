@@ -30,7 +30,7 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
   ],
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

@@ -10,7 +10,7 @@ import {
 } from 'redux';
 import { batchedSubscribe } from 'redux-batched-subscribe';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import * as multi from 'redux-multi';
+import reduxMulti from 'redux-multi';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import {
   getRootReducer,
@@ -28,7 +28,7 @@ const history: History = createBrowserHistory();
 const enhancers: any[] = [];
 const middleware: Middleware[] = [
   epicMiddleware,
-  multi,
+  reduxMulti,
   routerMiddleware(history),
 ];
 
