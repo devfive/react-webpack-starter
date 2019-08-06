@@ -1,2 +1,2 @@
-export { Loading, Props as LoadingProps } from './loading';
-export { LoadingContainer } from './loading.container';
+export { Loading, Props as LoadingProps } from './Loading';
+export { LoadingContainer } from './LoadingContainer';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Loading } from './loading';
+import { Loading } from './Loading';
 
 const mapStateToProps: any = (state: any) => {
   return {

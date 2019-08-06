@@ -1,4 +1,5 @@
 import '@atlaskit/css-reset';
+import '../styles/styles.scss';
 
 import { ConnectedRouter } from 'connected-react-router';
 import * as React from 'react';
