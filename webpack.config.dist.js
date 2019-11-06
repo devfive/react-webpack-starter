@@ -33,10 +33,13 @@ module.exports = {
     }),
   ],
   devtool: 'cheap-module-source-map',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: [path.join(__dirname, 'src')],
         enforce: 'pre',
         loader: 'eslint-loader',
@@ -46,36 +49,45 @@ module.exports = {
         },
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: [
           path.join(__dirname, 'src'),
         ],
         loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        include: [path.join(__dirname, 'src')],
+        enforce: 'pre',
+        loader: 'tslint-loader',
         options: {
-          presets: [
-            'es2015',
-            'stage-2',
-            'react',
-          ],
-          plugins: [
-            'transform-function-bind',
-          ],
+          failOnWarning: false,
+          failOnError: true,
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.tsx?$/,
+        include: [
+          path.join(__dirname, 'src'),
+        ],
+        loader: 'ts-loader',
+      },
+      {
+        test: /\.s?css$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
             },
           },
           'postcss-loader',
           'sass-loader',
         ],
-        exclude,
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -90,6 +102,14 @@ module.exports = {
         use: [
           'file-loader?name=assets/[hash:7].[ext]',
         ],
+        exclude,
+      },
+      {
+        test: /\.svg$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+        },
         exclude,
       },
     ],
